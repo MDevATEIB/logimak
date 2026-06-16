@@ -52,7 +52,7 @@ export default defineConfig({
   },
   
   // Base URL pour le déploiement sur GitHub Pages
-  base: './',
+  base: '/logimak/',
   
   // Définir explicitement que nous ne sommes pas dans Tauri
   define: {
