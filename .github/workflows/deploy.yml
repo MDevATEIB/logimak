@@ -1,0 +1,70 @@
+# Workflow GitHub Actions pour déploiement automatique sur GitHub Pages
+
+name: Déployer la démo sur GitHub Pages
+
+# Déclenchement du workflow
+on:
+  # Déclenché lors d'un push sur la branche main
+  push:
+    branches:
+      - main
+  
+  # Permet de déclencher manuellement depuis l'onglet Actions
+  workflow_dispatch:
+
+# Définir les permissions nécessaires
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# N'autoriser qu'un seul déploiement à la fois
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
+jobs:
+  # Job de build
+  build:
+    runs-on: ubuntu-latest
+    
+    steps:
+      # 1. Checkout du code
+      - name: 📥 Checkout du code
+        uses: actions/checkout@v4
+      
+      # 2. Setup Node.js
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      
+      # 3. Installer les dépendances
+      - name: 📦 Installer les dépendances
+        run: npm ci
+      
+      # 4. Build de la version web
+      - name: 🏗️ Build de la version web
+        run: npm run build:web
+      
+      # 5. Upload des artifacts
+      - name: 📤 Upload des artifacts
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './dist-web'
+  
+  # Job de déploiement
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    
+    runs-on: ubuntu-latest
+    needs: build
+    
+    steps:
+      # Déployer sur GitHub Pages
+      - name: 🚀 Déployer sur GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
