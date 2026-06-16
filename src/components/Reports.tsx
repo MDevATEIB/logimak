@@ -1,11 +1,14 @@
 import { useEffect, useState } from 'react';
 import { FileText, Calendar, Printer, TrendingUp, Package } from 'lucide-react';
-import { db } from '../services/database';
 import type { Sale, Product } from '../types';
 import { format, startOfMonth, endOfMonth, startOfYear, endOfYear } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
-export default function Reports() {
+interface ReportsProps {
+  db: any;
+}
+
+export default function Reports({ db }: ReportsProps) {
   const [sales, setSales] = useState<Sale[]>([]);
   const [products, setProducts] = useState<Product[]>([]);
   const [reportType, setReportType] = useState<'sales' | 'stock' | 'revenue'>('sales');

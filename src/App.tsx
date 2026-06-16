@@ -138,19 +138,21 @@ function App() {
   };
 
   const renderView = () => {
+    if (!db) return null;
+    
     switch (currentView) {
       case 'dashboard':
-        return <Dashboard onNavigate={setCurrentView} />;
+        return <Dashboard db={db} onNavigate={setCurrentView} />;
       case 'stock':
-        return <Stock />;
+        return <Stock db={db} />;
       case 'sales':
-        return <Sales />;
+        return <Sales db={db} />;
       case 'reports':
-        return <Reports />;
+        return <Reports db={db} />;
       case 'settings':
-        return <Settings />;
+        return <Settings db={db} />;
       default:
-        return <Dashboard onNavigate={setCurrentView} />;
+        return <Dashboard db={db} onNavigate={setCurrentView} />;
     }
   };
 

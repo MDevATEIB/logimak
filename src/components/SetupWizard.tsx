@@ -386,7 +386,7 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
           display: flex;
           align-items: center;
           justify-content: center;
-          background-image: url('/image fond logimak.png');
+          background-image: url('/fond-logimak.png');
           background-size: cover;
           background-position: center;
           background-repeat: no-repeat;

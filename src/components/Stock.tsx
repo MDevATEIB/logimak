@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Plus, Edit, Trash2, Package, Search, AlertCircle } from 'lucide-react';
-import { db } from '../services/database';
 import type { Product, Category } from '../types';
 
-export default function Stock() {
+interface StockProps {
+  db: any;
+}
+
+export default function Stock({ db }: StockProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [categories, setCategories] = useState<Category[]>([]);
   const [searchTerm, setSearchTerm] = useState('');

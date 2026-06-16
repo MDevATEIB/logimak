@@ -7,14 +7,14 @@ import {
   AlertTriangle,
   FileText
 } from 'lucide-react';
-import { db } from '../services/database';
 import type { DashboardStats } from '../types';
 
 interface DashboardProps {
+  db: any;
   onNavigate?: (view: string) => void;
 }
 
-export default function Dashboard({ onNavigate }: DashboardProps = {}) {
+export default function Dashboard({ db, onNavigate }: DashboardProps) {
   const [stats, setStats] = useState<DashboardStats>({
     dailyRevenue: 0,
     monthlyRevenue: 0,

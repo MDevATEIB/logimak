@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Building2, Save, Info, Database, Upload, Download, RotateCcw, AlertTriangle } from 'lucide-react';
-import { db } from '../services/database';
 import type { CompanyInfo } from '../types';
 
-export default function Settings() {
+interface SettingsProps {
+  db: any;
+}
+
+export default function Settings({ db }: SettingsProps) {
   const [companyInfo, setCompanyInfo] = useState<CompanyInfo>({
     name: '',
     address: '',

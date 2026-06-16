@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { Plus, ShoppingCart, Printer, Trash2, X } from 'lucide-react';
-import { db } from '../services/database';
 import type { Product, Sale, SaleItem } from '../types';
 
-export default function Sales() {
+interface SalesProps {
+  db: any;
+}
+
+export default function Sales({ db }: SalesProps) {
   const [products, setProducts] = useState<Product[]>([]);
   const [sales, setSales] = useState<Sale[]>([]);
   const [showNewSale, setShowNewSale] = useState(false);
@@ -21,7 +24,7 @@ export default function Sales() {
     const productsData = await db.getProducts();
     const salesData = await db.getSales();
     setProducts(productsData);
-    setSales(salesData.sort((a, b) => b.date.localeCompare(a.date)));
+    setSales(salesData.sort((a: Sale, b: Sale) => b.date.localeCompare(a.date)));
   };
 
   const handleAddToCart = () => {
