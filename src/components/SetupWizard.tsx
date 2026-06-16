@@ -376,57 +376,84 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
 
       <style>{`
         .setup-wizard {
+          position: fixed;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
           width: 100vw;
           height: 100vh;
           display: flex;
           align-items: center;
           justify-content: center;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          padding: 2rem;
+          background-image: url('/image fond logimak.png');
+          background-size: cover;
+          background-position: center;
+          background-repeat: no-repeat;
+          padding: 90px 1rem 1rem 1rem;
+          box-sizing: border-box;
+          overflow: auto;
+          z-index: 9999;
         }
 
         .setup-container {
-          background: var(--bg-card);
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(10px);
+          -webkit-backdrop-filter: blur(10px);
           border-radius: var(--radius-xl);
-          box-shadow: var(--shadow-xl);
+          box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
           width: 100%;
           max-width: 800px;
-          max-height: 90vh;
+          max-height: calc(100vh - 100px);
+          min-height: 600px;
           display: flex;
           flex-direction: column;
           overflow: hidden;
+          margin: auto;
+          position: relative;
+          z-index: 1;
+          border: 1px solid rgba(249, 115, 22, 0.3);
         }
 
         .setup-header {
-          padding: 2rem;
+          padding: 1.25rem 2rem;
           text-align: center;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          color: white;
+          background: rgba(255, 255, 255, 0.75);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          color: #333;
+          flex-shrink: 0;
+          border-bottom: 3px solid #f97316;
         }
 
         .setup-logo {
           display: flex;
           justify-content: center;
-          margin-bottom: 1rem;
+          margin-bottom: 0.5rem;
+          color: #f97316;
         }
 
         .setup-title {
-          font-size: 2rem;
+          font-size: 1.5rem;
           font-weight: 700;
-          margin-bottom: 0.5rem;
+          margin-bottom: 0.25rem;
+          color: #1a1a1a;
         }
 
         .setup-description {
-          font-size: 1rem;
-          opacity: 0.9;
+          font-size: 0.9rem;
+          color: #666;
         }
 
         .setup-steps {
           display: flex;
-          padding: 2rem;
+          padding: 1.5rem 2rem;
           justify-content: space-between;
-          background: var(--bg-main);
+          background: rgba(248, 248, 248, 0.7);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
           border-bottom: 1px solid var(--border);
+          flex-shrink: 0;
         }
 
         .setup-step {
@@ -449,7 +476,7 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
         }
 
         .setup-step.completed:not(:last-child)::after {
-          background: var(--primary);
+          background: #10b981;
         }
 
         .step-number {
@@ -468,14 +495,14 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
         }
 
         .setup-step.active .step-number {
-          background: var(--primary);
-          border-color: var(--primary);
+          background: #f97316;
+          border-color: #f97316;
           color: white;
         }
 
         .setup-step.completed .step-number {
-          background: var(--success);
-          border-color: var(--success);
+          background: #10b981;
+          border-color: #10b981;
           color: white;
         }
 
@@ -486,14 +513,33 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
         }
 
         .setup-step.active .step-label {
-          color: var(--primary);
+          color: #f97316;
           font-weight: 600;
         }
 
         .setup-content {
-          flex: 1;
+          flex: 1 1 auto;
           overflow-y: auto;
+          overflow-x: hidden;
           padding: 2rem;
+          min-height: 0;
+        }
+        
+        .setup-content::-webkit-scrollbar {
+          width: 8px;
+        }
+        
+        .setup-content::-webkit-scrollbar-track {
+          background: var(--bg-main);
+        }
+        
+        .setup-content::-webkit-scrollbar-thumb {
+          background: var(--border);
+          border-radius: 4px;
+        }
+        
+        .setup-content::-webkit-scrollbar-thumb:hover {
+          background: var(--text-muted);
         }
 
         .setup-form {
@@ -502,7 +548,7 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
         }
 
         .form-title {
-          font-size: 1.5rem;
+          font-size: 1.25rem;
           font-weight: 600;
           margin-bottom: 1.5rem;
           color: var(--text-primary);
@@ -512,6 +558,46 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
           display: flex;
           align-items: center;
           gap: 0.5rem;
+        }
+
+        @media (max-width: 768px) {
+          .setup-wizard {
+            padding: 150px 0.5rem 1rem 0.5rem;
+          }
+          
+          .setup-container {
+            max-height: calc(100vh - 160px);
+            min-height: 500px;
+            border-radius: var(--radius-lg);
+          }
+          
+          .setup-header {
+            padding: 1rem;
+          }
+          
+          .setup-steps {
+            padding: 1rem;
+          }
+          
+          .step-label {
+            font-size: 0.75rem;
+          }
+          
+          .setup-title {
+            font-size: 1.25rem;
+          }
+          
+          .setup-description {
+            font-size: 0.85rem;
+          }
+          
+          .setup-content {
+            padding: 1.5rem;
+          }
+          
+          .setup-actions {
+            padding: 1rem 1.5rem;
+          }
         }
 
         .logo-upload-section {
@@ -605,9 +691,9 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
         .setup-info-box {
           margin-top: 1.5rem;
           padding: 1rem;
-          background: var(--primary-light);
+          background: rgba(249, 115, 22, 0.1);
           border-radius: var(--radius-md);
-          border-left: 4px solid var(--primary);
+          border-left: 4px solid #f97316;
         }
 
         .setup-info-box p {
@@ -621,7 +707,10 @@ export default function SetupWizard({ onComplete }: SetupWizardProps) {
           gap: 1rem;
           padding: 1.5rem 2rem;
           border-top: 1px solid var(--border);
-          background: var(--bg-main);
+          background: rgba(248, 248, 248, 0.7);
+          backdrop-filter: blur(5px);
+          -webkit-backdrop-filter: blur(5px);
+          flex-shrink: 0;
         }
       `}</style>
     </div>

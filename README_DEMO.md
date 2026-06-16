@@ -2,15 +2,12 @@
 
 <div align="center">
 
-![LOGIMAK Logo](https://via.placeholder.com/200x80/667eea/ffffff?text=LOGIMAK)
-
 **Logiciel de gestion commerciale moderne pour PME et commerçants**
 
-[![Demo Live](https://img.shields.io/badge/Demo-Live-success?style=for-the-badge)](https://VOTRE-NOM.github.io/logimak-demo/)
-[![Version](https://img.shields.io/badge/Version-1.0.2-blue?style=for-the-badge)](https://github.com/makkadev/logimak)
-[![License](https://img.shields.io/badge/License-Proprietary-red?style=for-the-badge)](LICENSE)
+[![Demo Live](https://img.shields.io/badge/Demo-Live-success?style=for-the-badge)](https://mdevateib.github.io/logimak/)
+[![Version](https://img.shields.io/badge/Version-1.0.2-blue?style=for-the-badge)](https://github.com/MDevATEIB/logimak)
 
-[🌐 Essayer la démo](https://VOTRE-NOM.github.io/logimak-demo/) • [📥 Télécharger](https://github.com/makkadev/logimak/releases) • [📖 Documentation](INSTALLATION.md) • [📞 Contact](#contact)
+[🌐 Essayer la démo](https://mdevateib.github.io/logimak/) • [📥 Télécharger](https://github.com/MDevATEIB/logimak/releases) • [📖 Documentation](INSTALLATION.md) • [📞 Contact](#contact)
 
 </div>
 
@@ -18,7 +15,7 @@
 
 ## 🎮 Essayer la démo maintenant !
 
-### 👉 **[Lancer la démonstration en ligne](https://VOTRE-NOM.github.io/logimak-demo/)**
+### 👉 **[Lancer la démonstration en ligne](https://mdevateib.github.io/logimak/)**
 
 ✨ **Aucune installation requise** - Testez toutes les fonctionnalités directement dans votre navigateur !
 
